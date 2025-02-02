@@ -1,0 +1,49 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background: bisque;
+    text-align: center;
+}
+
+button:hover{
+    background: #2d048d;
+}
+
+.ventana{
+    background: #fff;
+    text-align: center;
+    /*borde: tamaño, tipo y color*/
+    box-shadow: 20px 26px 39px 0px rgba(0,0,0,0.43);
+-webkit-box-shadow: 20px 26px 39px 0px rgba(0,0,0,0.43);
+-moz-box-shadow: 20px 26px 39px 0px rgba(0,0,0,0.43);
+    width: 350px;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+}
+
+.tamaño{
+    padding: 10px;
+    text-align: left;
+    font-size: medium;
+    border-radius: 10px;
+    border: none;
+}
+
+.b1{
+    margin: 10px;
+    width: 62%;
+    height: 45px;
+    background-color: #4a10d1;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 600;
+    
+}

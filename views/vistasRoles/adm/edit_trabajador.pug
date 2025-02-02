@@ -1,0 +1,27 @@
+div#editUserModal.modal.fade(tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true")
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        h5#editUserModalLabel.modal-title Editar Usuario
+        button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+      div.modal-body
+        form#editUserForm(action="/adm/us/editsuccess" method="POST")
+          input(type="hidden" name="_csrf" value=csrf)
+          input(type="hidden" id="editUserId" name="id_usuario")
+          .mb-3
+            label(for="editUserName" class="form-label") Nombre
+            input#editUserName.form-control(type="text" required name="nombre_usuario")
+          .mb-3
+            label(for="editUserEmail" class="form-label") Correo Electrónico
+            input#editUserEmail.form-control(type="email" required name="correo")
+          .mb-3
+            input#editUserPass.form-control(type="hidden" required name="contraseña")
+          .mb-3
+            label(for="id_rol" class="form-label") Rol
+            select#editUserRole.form-select(name="id_rol")
+              each rol in roles
+                option(value=rol.id_rol) #{rol.nombre_rol}
+          .mb-3
+            label(for="editUserAddress" class="form-label") Dirección
+            input#editUserAddress.form-control(type="text" required name="direccion")
+          button(type="submit" class="btn btn-primary") Guardar Cambios

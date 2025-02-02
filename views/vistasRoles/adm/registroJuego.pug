@@ -1,0 +1,50 @@
+
+.modal.fade(id="registroGameModal" tabindex="-1" aria-labelledby="registroGameModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title(id="registroGameModalLabel") Registrar Videojuego
+        button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+      .modal-body
+        form(action="/adm/games" method="POST" enctype="multipart/form-data")
+          //input(type='hidden' name='_csrf' value=csrf)
+          .mb-3
+            label(for="nombre_juego" class="form-label") Nombre del Videojuego
+            input#nombre_juego.form-control(type="text" name="nombre_juego" required placeholder="Videojuego")
+          .mb-3
+            label(for="precio" class="form-label") Precio
+            input#precio.form-control(type="text" name="precio" required placeholder="$$$$")
+          .mb-3
+            label(for="costo" class="form-label") Costo
+            input#costo.form-control(type="text" name="costo" required placeholder="$$$")
+          .mb-3
+            label(for="consola" class="form-label") Consola
+            select#consola.form-select(name="id_plataforma")
+              each plataforma in plataformasJuegos
+                option(value=plataforma.id_plataforma, selected=plataforma.selected) #{plataforma.nombre_plataforma}
+          .mb-3
+            label(for="imagen" class="form-label") Imagen
+            input#imagen.form-control(type="file" name="uploaded_file" required accept="image/*")
+          //.text-end
+          .mb-3
+            label(for="link_video" class="form-label") Link del video del trailer
+            input#costo.form-control(type="text" name="link_video" required placeholder="https://youtube")
+          .mb-3
+            label(for="informacion" class="form-label") Sinopsis del juego
+            input#costo.form-control(type="text" name="informacion" placeholder="Erase una vez...")
+
+          .mb-3
+            label(for="stock" class="form-label") Stock
+            input#stock.form-control(type="number" name="stock" placeholder="Cantidad en stock" required)
+
+          .mb-3
+            label(for="stock_minimo" class="form-label") Stock Mínimo
+            input#stock_minimo.form-control(type="number" name="stock_minimo" placeholder="Stock mínimo" required)
+
+          .mb-3
+            label(for="precio_plataforma" class="form-label") Precio por Plataforma
+            input#precio_plataforma.form-control(type="number" name="precio_plataforma" placeholder="$$$$" step="0.01" required)
+
+            button(type="submit" class="btn btn-primary") Registrar
+      .modal-footer
+        button(type="button" class="btn btn-secondary" data-bs-dismiss="modal") Cerrar

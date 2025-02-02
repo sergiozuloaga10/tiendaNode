@@ -1,0 +1,31 @@
+
+.modal.fade(id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true")
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5.modal-title(id="registroModalLabel") Registrar Usuario
+        button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+      .modal-body
+        form(action="/adm/us" method="POST" noValidate)
+          input(type="hidden" name="_csrf" value=csrf)
+          .mb-3
+            label(for="nombre_usuario" class="form-label") Usuario
+            input#nombre_usuario.form-control(type="text" name="nombre_usuario" required placeholder="Usuario")
+          .mb-3
+            label(for="correo" class="form-label") Correo Electrónico
+            input#correo.form-control(type="email" name="correo" required placeholder="demo@demo.com")
+          .mb-3
+            label(for="contraseña" class="form-label") Contraseña
+            input#contrase.form-control(type="password" name="contraseña" required placeholder="Contraseña")
+          .mb-3
+            label(for="id_rol" class="form-label") Rol
+            select#rol.form-select(name="id_rol")
+              each rol in roles
+                option(value=rol.id_rol, selected=rol.selected) #{rol.nombre_rol}
+          .mb-3
+            label(for="direccion" class="form-label") Dirección
+            input#direccion.form-control(type="text" name="direccion" required placeholder="Dirección")
+          .text-end
+            button(type="submit" class="btn btn-primary") Registrar
+      .modal-footer
+        button(type="button" class="btn btn-secondary" data-bs-dismiss="modal") Cerrar

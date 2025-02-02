@@ -1,0 +1,28 @@
+extends ../../layout/adminLayout
+
+block content
+  .container-fluid
+    h2.mt-4 Pedidos
+    p Lista de pedidos realizados por los usuarios.
+
+    .table-responsive
+      table.table.table-striped
+        thead
+          tr
+            th ID
+            th Usuario
+            th Estado
+            th Total de Compra
+            th Fecha
+            th Acciones
+        tbody
+          each order in orders
+            tr
+              td= order.id_carrito
+              td= order.id_usuario
+              td= order.estado
+              td= order.total_compra
+              td= order.fecha_compra
+              td
+                a(href=`/adm/orders/view/${order.id_carrito}` class="btn btn-sm btn-primary") Ver
+                //a(href=`/adm/orders/delete/${order.id_carrito}` class="btn btn-sm btn-danger ml-2") Eliminar

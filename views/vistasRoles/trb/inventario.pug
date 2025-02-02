@@ -1,0 +1,39 @@
+extends ../../layout/trbLayout
+
+block content
+  h1.text-center=pagina
+  if errores
+    div(class="row justify-content-center text-bg-danger" )
+      div(class="col-md-5")
+        each er in errores
+          h1(class="fw-bold fs-6")=er.msg
+  .container-fluid
+    h2.mt-4 Juegos
+    p Lista de juegos disponibles en la tienda.
+    .table-responsive
+      table.table.table-striped
+        thead
+          tr
+            th ID Juego
+            th Nombre del Juego
+            th Imagen
+            th Costo
+            th Precio
+            th Consola
+            th Stock
+            th Stock Mínimo
+        tbody
+          each plataforma in plataformas
+            tr
+              td= plataforma.videojuego.id_videojuego  
+              td= plataforma.videojuego.nombre_juego 
+              td 
+                img(src=plataforma.videojuego.imagen, alt="", width="50", height="70")
+              td= plataforma.videojuego.costo 
+              td= plataforma.videojuego.precio  
+              td= plataforma.consola  
+              td= plataforma.stock  
+              td= plataforma.stock_minimo  
+
+  script(src="/js/eliminarGame.js")
+  script(src="/js/editGame.js")

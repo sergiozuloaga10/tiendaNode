@@ -1,0 +1,39 @@
+header#header.header
+  img.logo(src='img/logo.png' alt='')
+  .sesion
+    img.log(src='img/cart.jpg' alt='')
+    
+  .container
+    .row
+      .two.columns.u-pull-right
+        ul
+          li.submenu
+            #carrito
+              span.titulo-carro
+                b Carrito de compra
+              br
+              table#lista-carrito.u-full-width
+                thead
+                  tr
+                    th Imagen
+                    th Nombre
+                    th Precio
+                    th Cantidad
+                    th
+                tbody
+              a#vaciar-carrito.button.u-full-width(href='#') Vaciar Carrito
+              br
+              br
+              span.total Total: $0.00
+              br
+              br
+              form(action='/carrito/guardar' method='POST')
+                input(type="hidden" name="_csrf" value=csrf)
+                input(type="hidden" name="items" id="items" required value='')
+                input(type="hidden" name="total" id="total" required  value='')
+                input(type="hidden" name="cantidadProducto" id="cantidadP" required value='')
+
+                button#enviar-carrito.procesar(type='submit') Procesar
+
+              br
+              br

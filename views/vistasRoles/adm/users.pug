@@ -1,0 +1,56 @@
+extends ../../layout/adminLayout
+
+block content
+  h1.text-center=pagina
+  if errores
+    div(class="row justify-content-center text-bg-danger" )
+      div(class="col-md-5")
+        each er in errores
+          h1(class="fw-bold fs-6")=er.msg
+  .container-fluid
+    h2.mt-4 Usuarios
+    p Lista de usuarios registrados en el sistema.
+
+    .d-flex.justify-content-end
+      button(type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registroModal") Registrar Usuario
+
+    include registro_adm.pug
+    include edit_trabajador.pug
+    include eliminarUser.pug
+    .table-responsive
+      table.table.table-striped.mt-3
+        thead
+          tr
+            th ID
+            th Nombre
+            th Correo Electrónico
+            th Confirmado
+            th Rol
+            th Acciones
+        tbody
+          each Usuario in Usuarios
+            tr
+              td= Usuario.id_usuario
+              td= Usuario.nombre_usuario
+              td= Usuario.correo
+              td= Usuario.confirmar 
+              td= Usuario.id_rol
+              td
+                //include edit_trabajador.pug
+                button.btn.btn-warning.btn-sm(
+                  type="button",
+                  data-bs-toggle="modal",
+                  data-bs-target="#editUserModal",
+                  data-id=Usuario.id_usuario
+                ) Editar
+
+                button.btn.btn-danger.btn-sm(
+                  type="button",
+                  data-bs-toggle="modal",
+                  data-bs-target="#deleteUserModal",
+                  data-id=Usuario.id_usuario
+                ) Eliminar
+
+
+  script(src="/js/editUser.js") 
+  script(src="/js/eliminarUser.js")

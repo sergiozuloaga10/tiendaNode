@@ -1,0 +1,27 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  // CSS
+  link(rel='stylesheet' href='css/login.css')
+  title Inicio
+  link(rel='icon' href='img/i.png' type='image/x-icon')
+form(action='/credenciales' method='post')
+  .ventana
+    input(type="hidden" name="_csrf" value=csrf)
+    br
+    label(for='correo') Correo
+    br
+    input(type='email' name='correo' required placeholder='Correo' class='tamaño')
+    br
+    br
+    label(for='contraseña') Contrase&ntilde;a
+    br
+    input(type='password' name='contraseña' required placeholder='Contraseña' class='tamaño')
+    br
+    button.b1(type='submit') Entrar
+    br
+    p
+      | &iquest;No est&aacute;s registrado? 
+      a(href='/registrar') Reg&iacute;strate aqu&iacute;
+    br

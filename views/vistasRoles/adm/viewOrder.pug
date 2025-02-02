@@ -1,0 +1,34 @@
+extends ../../layout/adminLayout
+
+block content
+    h1 Detalles del Carrito
+    p
+        strong Usuario: 
+        | #{order.usuarios[0].nombre_usuario} (#{order.usuarios[0].correo})
+    p
+        strong Método de pago: 
+        | #{order.metodo_pagos[0].tipo_pago} - #{order.metodo_pagos[0].fecha_compra}
+    p
+        strong Total:
+        | $#{order.total_compra}
+
+    h2 Juegos en este carrito
+    table.table
+        thead
+            tr
+                th Imagen
+                th Nombre
+                th Precio
+                th Cantidad
+                th Descripción
+        tbody
+            each item in order.carritos_videojuegos
+                tr
+                    td
+                        img(src=item.videojuego.imagen, alt=item.videojuego.nombre_juego, width="100")
+                    td #{item.videojuego.nombre_juego}
+                    td $#{item.videojuego.precio}
+                    td #{item.cantidad}
+                    td #{item.videojuego.informacion}
+
+    a(href='/adm/orders' class='btn btn-secondary') Volver a órdenes

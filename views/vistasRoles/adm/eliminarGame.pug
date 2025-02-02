@@ -1,0 +1,15 @@
+div#deleteGameModal.modal.fade(tabindex="-1" aria-labelledby="deleteGameModalLabel" aria-hidden="true")
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        h5#deleteGameModalLabel.modal-title Eliminar Videojuego
+        button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+      div.modal-body
+        form#deleteUserForm(action="/adm/games/deletesuccess" method="POST")
+          input(type="hidden" name="_csrf" value=csrf)
+          input(type="hidden" id="deleteGameId" name="id_videojuego")
+          input(type="hidden" id="name" name="nombre_juego")
+          .mb-3
+            // Mostrar el nombre del juego a eliminar
+            label(for="delete" class="form-label" id="editame") 
+          button(type="submit" class="btn btn-danger") Eliminar Videojuego

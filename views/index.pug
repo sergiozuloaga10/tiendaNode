@@ -1,0 +1,15 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(name='csrf-token' content='#{csrfToken}')
+    link(rel='stylesheet' href='css/style.css')
+    title GameShopX
+    body
+        include header 
+        include nav 
+        main 
+            block cuerpocontenido
+        script(src='js/carrito.js')
+        script(src='js/plataforma.js')
+        script(src='js/informacion.js')

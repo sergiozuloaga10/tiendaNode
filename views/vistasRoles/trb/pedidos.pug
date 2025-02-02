@@ -1,0 +1,47 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Pedidos
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container-fluid
+        a.navbar-brand(href="#") TiendaGames
+        button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav")
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link(href="/trb/inventario") Inventarios
+            li.nav-item
+              a.nav-link.active(href="/trb/pedidos") Pedidos
+            li.nav-item
+              a.nav-link(href="/logout") Cerrar Sesión
+
+    .container.mt-4
+      h1.text-center.text-primary Pedidos
+      p.text-center.text-secondary Visualiza y procesa los pedidos pendientes.
+
+      table.table.table-hover.mt-4
+        thead.table-dark
+          tr
+            th # Pedido
+            th Cliente
+            th Total
+            th Estado
+            th Acciones
+        tbody
+          each pedido in pedidos
+            tr
+              td= pedido.id_carrito
+              td= pedido.cliente
+              td $#{pedido.total_compra}
+              td= pedido.estado
+              td
+                a.btn.btn-sm.btn-info(href=`/trb/pedidos/${pedido.id_carrito}/detalles`) Ver Detalles
+                if pedido.estado === 'Pendiente'
+                  a.btn.btn-sm.btn-success(href=`/trb/pedidos/${pedido.id_carrito}/completar`) Completar
+
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js")

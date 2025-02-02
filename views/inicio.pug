@@ -1,0 +1,22 @@
+extends ./layout/index
+
+block cuerpocontenido
+  .contenido
+    each videojuego in videojuegos
+      .juegos(data-consola=videojuego.consola ? videojuego.consola : 'desconocido')
+        img(src=videojuego.videojuego.imagen alt=videojuego.videojuego.nombre_juego)
+        br
+        h3= videojuego.videojuego.nombre_juego
+        br
+        span $#{videojuego.videojuego.precio}
+        br
+        a.agregar(href='#' data-id=videojuego.videojuego.id_videojuego) Agregar al carrito
+        br
+        button.info(data-id=videojuego.videojuego.id_videojuego) Mas información
+
+      .info-juegos 
+        .informacion(id=videojuego.videojuego.id_videojuego)
+          img(src=videojuego.videojuego.imagen alt=videojuego.videojuego.nombre_juego)
+          iframe(width='400' height='280' src=videojuego.videojuego.link_video title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen='')
+          h4 Sinopsis 
+          p #{videojuego.videojuego.informacion}

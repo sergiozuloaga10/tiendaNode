@@ -1,0 +1,15 @@
+div#deleteUserModal.modal.fade(tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true")
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        h5#deleteUserModalLabel.modal-title Eliminar Usuario
+        button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+      div.modal-body
+        form#deleteUserForm(action="/adm/us/deletesuccess" method="POST")
+          input(type="hidden" name="_csrf" value=csrf)
+          input(type="hidden" id="deleteUserId" name="id_usuario")
+          input(type="hidden" id="name" name="nombre_usuario")
+          .mb-3
+            // Mostrar el nombre del usuario a eliminar
+            label(for="delete" class="form-label" id="editame") 
+          button(type="submit" class="btn btn-danger") Eliminar Usuario

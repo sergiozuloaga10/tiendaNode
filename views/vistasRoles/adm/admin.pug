@@ -1,0 +1,30 @@
+extends ../../layout/adminLayout
+
+block content
+  .container-fluid
+    .row
+      .col-12.mt-4
+        h2 Administración
+        p Bienvenido al panel de administración. Aquí puedes gestionar usuarios, juegos y pedidos.
+    
+    .row.mt-5
+      .col-md-4
+        .card
+          .card-body
+            h5.card-title Usuarios Registrados
+            p.card-text Total de usuarios: #{totalUsuarios}
+            a(href="/adm/us" class="btn btn-primary btn-sm") Ver Usuarios
+
+      .col-md-4
+        .card
+          .card-body
+            h5.card-title Juegos Disponibles
+            p.card-text Total de juegos: #{totalJuegos}
+            a(href="/adm/games" class="btn btn-primary btn-sm") Ver Juegos
+
+      .col-md-4
+        .card
+          .card-body
+            h5.card-title Pedidos Completados
+            p.card-text Total de pedidos: #{totalOrdenes}
+            a(href="/adm/orders" class="btn btn-primary btn-sm") Ver Pedidos
